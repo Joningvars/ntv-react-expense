@@ -1,4 +1,6 @@
+import { deleteExpense } from "@/services/delete-expense";
 import React from "react";
+
 
 type ItemProps = {
   name: string;
@@ -16,6 +18,7 @@ const Item = ({ item, setItems, setSum }: Props) => {
   const { name, cost } = item;
 
   const handleRemoveItem = (item: ItemProps) => {
+    deleteExpense(item.id);
     setItems((prev: []) => {
       return prev.filter((i: typeof item) => i.id !== item.id);
     });
